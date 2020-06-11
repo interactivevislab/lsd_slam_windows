@@ -231,10 +231,10 @@ void DebugOutput3DWrapper::publishDebugInfo(const Eigen::Matrix<float, 20, 1>& d
 //
 //	Eigen::Matrix<double, 3, 4> proj = get_projection(tracker);
 //
-//	Eigen::Vector3d point_cam = proj * point_target;
-//	Eigen::Vector3d pointx_cam = proj * point_x;
-//	Eigen::Vector3d pointy_cam = proj * point_y;
-//	Eigen::Vector3d pointz_cam = proj * point_z;
+//	Vector3D point_cam = proj * point_target;
+//	Vector3D pointx_cam = proj * point_x;
+//	Vector3D pointy_cam = proj * point_y;
+//	Vector3D pointz_cam = proj * point_z;
 //
 //	cv::line(rgb_img, cv::Point(point_cam[0], point_cam[1]), cv::Point(pointx_cam[0], pointx_cam[1]), cv::Scalar(255, 0, 0), 3);
 //	cv::line(rgb_img, cv::Point(point_cam[0], point_cam[1]), cv::Point(pointy_cam[0], pointy_cam[1]), cv::Scalar(0, 255, 0), 3);

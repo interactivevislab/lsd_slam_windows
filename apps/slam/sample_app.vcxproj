@@ -15,19 +15,20 @@
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>sample_app</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -51,8 +52,8 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\build\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\build\obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)build\obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sample_app</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -92,8 +93,8 @@
     </Midl>
     <Link>
       <AdditionalOptions> /machine:x64 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_system-vc120-mt-gd-1_59.lib;libboost_thread-vc120-mt-gd-1_59.lib;opencv_world300d.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(BOOST_DIR)/lib64-msvc-12.0;$(OPENCV_DIR)\x64\vc12\lib;$(SolutionDir)\build\lib\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_thread-vc141-mt-gd-x64-1_66.lib;opencv_world3410d.lib;g2o_core.lib;g2o_solver_csparse.lib;csparse.lib;g2o_csparse_extension.lib;g2o_stuff.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(BOOST_DIR)\stage\lib;$(OPENCV_DIR)\x64\vc15\lib;$(SolutionDir)build\lib\$(Platform)\$(Configuration)\;$(SolutionDir)Thirdparty\g2o\vcxproj\build\bin\x64\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <Version>
@@ -101,13 +102,13 @@
     </Link>
     <ProjectReference />
     <CustomBuildStep>
-      <Command>xcopy "$(OPENCV_DIR)x64\vc12\bin\opencv_world300d.dll" "$(OutDir)" /D /Y
-xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_system-vc120-mt-gd-1_59.dll" "$(OutDir)" /D /Y
-xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_thread-vc120-mt-gd-1_59.dll" "$(OutDir)" /D /Y</Command>
+      <Command>xcopy "$(OPENCV_DIR)x64\vc15\bin\opencv_world3410d.dll" "$(OutDir)" /D /Y
+xcopy "$(BOOST_DIR)stage\lib\boost_system-vc141-mt-x64-1_66.dll" "$(OutDir)" /D /Y
+xcopy "$(BOOST_DIR)stage\lib\boost_thread-vc141-mt-x64-1_66.dll" "$(OutDir)" /D /Y</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>Copying boost and OpenCV pre-build binaries to output directory</Message>
-      <Outputs>$(OutDir)opencv_world300d.dll;$(OutDir)boost_thread-vc120-mt-gd-1_59.dll;$(OutDir)boost_system-vc120-mt-gd-1_59.dll</Outputs>
+      <Outputs>$(OutDir)opencv_world3410d.dll;$(OutDir)boost_thread-vc141-mt-x64-1_66.dll;$(OutDir)boost_system-vc141-mt-x64-1_66.dl</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,8 +145,8 @@ xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_thread-vc120-mt-gd-1_59.dll" "$(OutDir)
     </Midl>
     <Link>
       <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_system-vc120-mt-1_59.lib;libboost_thread-vc120-mt-1_59.lib;opencv_world300.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(BOOST_DIR)/lib64-msvc-12.0;$(OPENCV_DIR)\x64\vc12\lib;$(SolutionDir)\build\lib\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_thread-vc141-mt-gd-x64-1_66.lib;opencv_world3410.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(BOOST_DIR)\stage\lib;$(OPENCV_DIR)\x64\vc15\lib;$(SolutionDir)\build\lib\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <Version>
@@ -154,10 +155,10 @@ xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_thread-vc120-mt-gd-1_59.dll" "$(OutDir)
     <ProjectReference />
     <CustomBuildStep>
       <Message>Copying boost and OpenCV pre-build binaries to output directory</Message>
-      <Command>xcopy "$(OPENCV_DIR)x64\vc12\bin\opencv_world300.dll" "$(OutDir)" /D /Y
-xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_system-vc120-mt-1_59.dll" "$(OutDir)" /D /Y
-xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_thread-vc120-mt-1_59.dll" "$(OutDir)" /D /Y</Command>
-      <Outputs>$(OutDir)opencv_world300.dll;$(OutDir)boost_thread-vc120-mt-1_59.dll;$(OutDir)boost_system-vc120-mt-1_59.dll</Outputs>
+      <Command>xcopy "$(OPENCV_DIR)x64\vc15\bin\opencv_world3410.dll" "$(OutDir)" /D /Y
+xcopy "$(BOOST_DIR)stage\lib\boost_system-vc141-mt-1_66.dll" "$(OutDir)" /D /Y
+xcopy "$(BOOST_DIR)stage\lib\boost_thread-vc141-mt-1_66.dll" "$(OutDir)" /D /Y</Command>
+      <Outputs>$(OutDir)opencv_world3410.dll;$(OutDir)boost_thread-vc141-mt-x64-1_66.dll;$(OutDir)boost_system-vc141-mt-x64-1_66.dll</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -170,21 +171,6 @@ xcopy "$(BOOST_DIR)lib64-msvc-12.0\boost_thread-vc120-mt-1_59.dll" "$(OutDir)" /
   <ItemGroup>
     <ProjectReference Include="..\..\lsd_slam\lsd_slam.vcxproj">
       <Project>{6fe4804e-3916-40da-9e5c-4862fc7e2716}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\thirdparty\g2o\vcxproj\core.vcxproj">
-      <Project>{1a9014e8-e404-4fc7-af52-99debf3ea944}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\thirdparty\g2o\vcxproj\csparse.vcxproj">
-      <Project>{19a55676-9388-4348-8820-09921cda458d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\thirdparty\g2o\vcxproj\csparse_extension.vcxproj">
-      <Project>{60c75375-a6f2-4f9c-813d-dcf6528e85c8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\thirdparty\g2o\vcxproj\solver_csparse.vcxproj">
-      <Project>{b3c0b1fb-ea32-47aa-b15b-4b46b735b295}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\thirdparty\g2o\vcxproj\stuff.vcxproj">
-      <Project>{e9245615-5c27-4bdf-b43d-9a6573db13a1}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\thirdparty\videoInput\videoInput\videoInput.vcxproj">
       <Project>{e45bdb9f-9880-4970-9f99-68443ec0de7d}</Project>

@@ -21,7 +21,7 @@
 #pragma once
 #include "util/sophus_util.h"
 #include "util/settings.h"
-#include <boost/thread/recursive_mutex.hpp>
+#include "boost/thread/recursive_mutex.hpp"
 #include <boost/thread/shared_mutex.hpp>
 #include "model/frame_pose_struct.h"
 #include "model/frame_memory.h"

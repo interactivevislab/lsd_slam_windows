@@ -60,8 +60,8 @@ std::vector<TrackableKFStruct> TrackableKeyFrameSearch::findEuclideanOverlapFram
 	float cosAngleTH = cosf(angleTH*0.5f*(fowX + fowY));
 
 
-	Eigen::Vector3d pos = frame->getScaledCamToWorld().translation();
-	Eigen::Vector3d viewingDir = frame->getScaledCamToWorld().rotationMatrix().rightCols<1>();
+	g2o::Vector3D pos = frame->getScaledCamToWorld().translation();
+	g2o::Vector3D viewingDir = frame->getScaledCamToWorld().rotationMatrix().rightCols<1>();
 
 	std::vector<TrackableKFStruct> potentialReferenceFrames;
 
@@ -73,16 +73,16 @@ std::vector<TrackableKFStruct> TrackableKeyFrameSearch::findEuclideanOverlapFram
 	graph->keyframesAllMutex.lock_shared();
 	for(unsigned int i=0;i<graph->keyframesAll.size();i++)
 	{
-		Eigen::Vector3d otherPos = graph->keyframesAll[i]->getScaledCamToWorld().translation();
+		g2o::Vector3D otherPos = graph->keyframesAll[i]->getScaledCamToWorld().translation();
 
 		// get distance between the frames, scaled to fit the potential reference frame.
 		float distFac = graph->keyframesAll[i]->meanIdepth / graph->keyframesAll[i]->getScaledCamToWorld().scale();
 		if(checkBothScales && distFacReciprocal < distFac) distFac = distFacReciprocal;
-		Eigen::Vector3d dist = (pos - otherPos) * distFac;
+		g2o::Vector3D dist = (pos - otherPos) * distFac;
 		float dNorm2 = dist.dot(dist);
 		if(dNorm2 > distanceTH) continue;
 
-		Eigen::Vector3d otherViewingDir = graph->keyframesAll[i]->getScaledCamToWorld().rotationMatrix().rightCols<1>();
+		g2o::Vector3D otherViewingDir = graph->keyframesAll[i]->getScaledCamToWorld().rotationMatrix().rightCols<1>();
 		float dirDotProd = otherViewingDir.dot(viewingDir);
 		if(dirDotProd < cosAngleTH) continue;
 
@@ -134,7 +134,7 @@ Frame* TrackableKeyFrameSearch::findRePositionCandidate(Frame* frame, float maxS
 		if(score < maxScore)
 		{
 			SE3 RefToFrame_tracked = tracker->trackFrameOnPermaref(potentialReferenceFrames[i].ref, frame, potentialReferenceFrames[i].refToFrame);
-			Sophus::Vector3d dist = RefToFrame_tracked.translation() * potentialReferenceFrames[i].ref->meanIdepth;
+			g2o::Vector3D dist = RefToFrame_tracked.translation() * potentialReferenceFrames[i].ref->meanIdepth;
 
 			float newScore = getRefFrameScore(dist.dot(dist), tracker->pointUsage);
 			float poseDiscrepancy = (potentialReferenceFrames[i].refToFrame * RefToFrame_tracked.inverse()).log().norm();

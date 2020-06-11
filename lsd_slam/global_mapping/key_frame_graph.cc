@@ -30,7 +30,7 @@
 #include <g2o/core/optimization_algorithm_levenberg.h>
 #include <g2o/core/robust_kernel_impl.h>
 #include <g2o/core/estimate_propagator.h>
-#include <g2o/core/sparse_optimizer_terminate_action.h>
+//#include <g2o/core/sparse_optimizer_terminate_action.h>
 
 #include "opencv2/opencv.hpp"
 

@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <memory>
 #include <Unknwnbase.h>
 
 
@@ -61,7 +62,7 @@ protected:
 	
 	CComAutoCriticalSection critSec;
 
-	std::auto_ptr<unsigned char> pixels;
+	auto_ptr<unsigned char> pixels;
 
 	unsigned long size;
 

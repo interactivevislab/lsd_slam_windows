@@ -161,7 +161,8 @@ static bool runCalibration( vector<vector<Point2f> > imagePoints,
     return ok;
 }
 
-
+//#pragma warning(suppress : 4996)
+#define _CRT_SECURE_NO_WARNINGS
 static void saveCameraParams( const string& filename,
                        Size imageSize, Size boardSize,
                        float squareSize, float aspectRatio, int flags,
@@ -175,7 +176,8 @@ static void saveCameraParams( const string& filename,
 
     time_t tt;
     time( &tt );
-    struct tm *t2 = localtime( &tt );
+    struct tm* t2 = new tm();
+	localtime_s(t2, &tt);
     char buf[1024];
     strftime( buf, sizeof(buf)-1, "%c", t2 );
 
@@ -194,7 +196,7 @@ static void saveCameraParams( const string& filename,
 
     if( flags != 0 )
     {
-        sprintf( buf, "flags: %s%s%s%s",
+        sprintf_s( buf, "flags: %s%s%s%s",
             flags & CV_CALIB_USE_INTRINSIC_GUESS ? "+use_intrinsic_guess" : "",
             flags & CV_CALIB_FIX_ASPECT_RATIO ? "+fix_aspectRatio" : "",
             flags & CV_CALIB_FIX_PRINCIPAL_POINT ? "+fix_principal_point" : "",
@@ -324,12 +326,12 @@ int main( int argc, char** argv )
         const char* s = argv[i];
         if( strcmp( s, "-w" ) == 0 )
         {
-            if( sscanf( argv[++i], "%u", &boardSize.width ) != 1 || boardSize.width <= 0 )
+            if( sscanf_s( argv[++i], "%u", &boardSize.width ) != 1 || boardSize.width <= 0 )
                 return fprintf( stderr, "Invalid board width\n" ), -1;
         }
         else if( strcmp( s, "-h" ) == 0 )
         {
-            if( sscanf( argv[++i], "%u", &boardSize.height ) != 1 || boardSize.height <= 0 )
+            if( sscanf_s( argv[++i], "%u", &boardSize.height ) != 1 || boardSize.height <= 0 )
                 return fprintf( stderr, "Invalid board height\n" ), -1;
         }
         else if( strcmp( s, "-pt" ) == 0 )
@@ -346,23 +348,23 @@ int main( int argc, char** argv )
         }
         else if( strcmp( s, "-s" ) == 0 )
         {
-            if( sscanf( argv[++i], "%f", &squareSize ) != 1 || squareSize <= 0 )
+            if( sscanf_s( argv[++i], "%f", &squareSize ) != 1 || squareSize <= 0 )
                 return fprintf( stderr, "Invalid board square width\n" ), -1;
         }
         else if( strcmp( s, "-n" ) == 0 )
         {
-            if( sscanf( argv[++i], "%u", &nframes ) != 1 || nframes <= 3 )
+            if( sscanf_s( argv[++i], "%u", &nframes ) != 1 || nframes <= 3 )
                 return printf("Invalid number of images\n" ), -1;
         }
         else if( strcmp( s, "-a" ) == 0 )
         {
-            if( sscanf( argv[++i], "%f", &aspectRatio ) != 1 || aspectRatio <= 0 )
+            if( sscanf_s( argv[++i], "%f", &aspectRatio ) != 1 || aspectRatio <= 0 )
                 return printf("Invalid aspect ratio\n" ), -1;
             flags |= CV_CALIB_FIX_ASPECT_RATIO;
         }
         else if( strcmp( s, "-d" ) == 0 )
         {
-            if( sscanf( argv[++i], "%u", &delay ) != 1 || delay <= 0 )
+            if( sscanf_s( argv[++i], "%u", &delay ) != 1 || delay <= 0 )
                 return printf("Invalid delay\n" ), -1;
         }
         else if( strcmp( s, "-op" ) == 0 )
@@ -400,7 +402,7 @@ int main( int argc, char** argv )
         else if( s[0] != '-' )
         {
             if( isdigit(s[0]) )
-                sscanf(s, "%d", &cameraId);
+                sscanf_s(s, "%d", &cameraId);
             else
                 inputFilename = s;
         }

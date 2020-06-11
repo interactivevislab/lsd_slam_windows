@@ -21,13 +21,13 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -51,6 +51,14 @@
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\source;C:\ComputerVision\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\vcxproj;C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\source;C:\ComputerVision\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\vcxproj;C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse</IncludePath>
+    <LibraryPath>C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\vcxproj\build\bin\x64\Release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)thirdparty\g2o\source;$(SolutionDir)thirdparty\eigen-3.2.5;$(SolutionDir)thirdparty\g2o\source\EXTERNAL\csparse;$(SolutionDir)thirdparty\g2o\vcxproj;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -69,10 +77,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\";solver_csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -100,7 +108,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR="Release";solver_csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR="Release";solver_csparse_EXPORTS;G2O_SHARED_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -108,10 +116,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\";solver_csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -120,19 +128,19 @@
     </Midl>
     <Link>
       <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>g2o_core.lib;g2o_stuff.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
+      <AdditionalLibraryDirectories>C:\ComputerVision\lsd_slam_windows\thirdparty\g2o\vcxproj\build\bin\x64\Release</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\linear_solver_csparse.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\g2o_csparse_api.h" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\solver_csparse.cpp" />
+    <ClInclude Include="..\source\g2o\solvers\csparse\linear_solver_csparse.h" />
+    <ClInclude Include="..\source\g2o\solvers\csparse\g2o_csparse_api.h" />
+    <ClCompile Include="..\source\g2o\solvers\csparse\solver_csparse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="core.vcxproj">
